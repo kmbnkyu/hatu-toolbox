@@ -1,0 +1,6 @@
+<%= form_with(model: memo) do |f| %>
+  <%= f.label :content, 'メモ' %>
+  <%= f.text_field :content %>
+
+  <%= f.submit '完了' %>
+<% end %>
