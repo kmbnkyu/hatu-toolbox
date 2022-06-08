@@ -1,6 +1,20 @@
-<%= form_with(model: memo) do |f| %>
-  <%= f.label :content, 'メモ' %>
-  <%= f.text_field :content %>
+<div class="row">
+  <div class="col-6">
 
-  <%= f.submit '完了' %>
-<% end %>
+    <%= form_with(model: @memo) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+      
+      <div class="mb-3">
+        <%= f.label :title, 'title' %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+      
+      <div class="mb-3">  
+        <%= f.label :content, 'content' %>
+        <%= f.text_field :content, class: 'form-control' %>
+      </div>
+
+      <%= f.submit '完了', class: 'btn btn-secondary' %>
+    <% end %>
+  </div>
+</div>

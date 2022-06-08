@@ -1,5 +1,27 @@
 <% if logged_in? %>
-  <p>ログイン完了ユーザ: <%= current_user.name %></p>
+  <h1 class="mb-1">memo一覧 <%= link_to '新規作成', new_memo_path, class: "mb-2 btn btn-primary" %></h1>
+  
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>title</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @memos.each do |memo| %>
+        <tr>
+          <td><%= link_to memo.id, memo %></td>
+          <td><%= memo.title %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div>
+    <%== pagy_bootstrap_nav(@pagy) %>
+  </div>
+
 <% else %>
   <div class="p-3 p-sm-5 my-4">
     <div class="text-center text-dark">

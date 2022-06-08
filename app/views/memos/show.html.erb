@@ -1,3 +1,18 @@
-<h1>id: <%= @memo.id %> のメッセージ詳細ページ</h1>
+<h1>memo詳細</h1>
 
-<p><%= @memo.content %></p>
+<h5>title</h5>
+<table class="table table-bordered">
+  <tr>
+    <td><%= @memo.title %></td>
+  </tr>
+</table>
+<h5>content</h5>
+<table class="table table-bordered">
+  <tr>
+    <td><%= @memo.content %></td>
+  </tr>
+</table>
+
+<%= link_to '編集', edit_memo_path(@memo), class: 'btn btn-light' %>
+<%= link_to '削除', @memo, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
+
