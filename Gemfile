@@ -46,6 +46,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'pagy'
 
+gem 'redcarpet'
+
+gem 'rouge'
+
 group :production do
   gem 'pg', '>= 0.18', '< 2.0'
 end

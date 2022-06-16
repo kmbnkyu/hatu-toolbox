@@ -1,4 +1,4 @@
-<h1>memo詳細</h1>
+<%= markdown("# memo詳細") %>
 
 <h5>title</h5>
 <table class="table table-bordered">
@@ -9,7 +9,7 @@
 <h5>content</h5>
 <table class="table table-bordered">
   <tr>
-    <td><%= safe_join(@memo.content.split("\n"),tag(:br)) %></td>
+    <td><%== safe_join(@memo.content.split("\n"),tag(:br)) %></td>
   </tr>
 </table>
 

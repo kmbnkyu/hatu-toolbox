@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   
   get 'signup', to: 'users#new'
+  get 'search', to: 'searches#search'
   resources :users, only: [:show, :create, :edit, :update, :destroy]
   
   resources :memos

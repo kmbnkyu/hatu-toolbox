@@ -1,16 +1,19 @@
 <% if logged_in? %>
-  <h1 class="mb-1">memo一覧 <%= link_to '新規作成', new_memo_path, class: "mb-2 btn btn-primary" %></h1>
-  
-
+  <div class="row justify-content-between">
+    <h1 class="col-6 mb-1">memo一覧 <%= link_to '新規作成', new_memo_path, class: "mb-2 btn btn-primary" %></h1>
+    <div class = "col-6 mt-3 text-end">
+      <%= render 'layouts/search' %>
+    </div>
+  </div>
   <ul class="list-unstyled mt-2">
     <% @memos.each do |memo| %>
       <li class="d-flex border mb-2">
         <div>
           <div>
-            <%= link_to memo.id, memo %>
+            <%= link_to '詳細', memo %>
           </div>
           <div>
-            <%= safe_join(memo.content.split("\n")[0..2],tag(:br)) %>
+            <%== safe_join(memo.content.split("\n")[0..2],tag(:br)) %>
           </div>
         </div>
       </li>

@@ -1,0 +1,16 @@
+<% if logged_in? %>
+<ul class="list-unstyled mt-2">
+    <% @memos.each do |memo| %>
+      <li class="d-flex border mb-2">
+        <div>
+          <div>
+            <%= link_to memo.id, memo %>
+          </div>
+          <div>
+            <%== safe_join(memo.content.split("\n")[0..2],tag(:br)) %>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
