@@ -1,18 +1,23 @@
-<%= markdown("# memo詳細") %>
 
-<h5>title</h5>
-<table class="table table-bordered">
-  <tr>
-    <td><%= @memo.title %></td>
-  </tr>
+<%= markdown("### 詳細") %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>title</th>
+      <td><%= @memo.title %></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>content</th>
+      <td><%== safe_join(@memo.content.split("\n"),tag(:br)) %></td>
+    </tr>
+  </tbody>
 </table>
-<h5>content</h5>
-<table class="table table-bordered">
-  <tr>
-    <td><%== safe_join(@memo.content.split("\n"),tag(:br)) %></td>
-  </tr>
-</table>
+
 
 <%= link_to '編集', edit_memo_path(@memo), class: 'btn btn-light' %>
 <%= link_to '削除', @memo, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
+  
 

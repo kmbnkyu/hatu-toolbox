@@ -1,0 +1,12 @@
+<div id="edit">
+  <div class="card">
+    <%= link_to edit_memo_path(@memo), class: "card-body text-dark text-decoration-none", remote: true do %>
+      <h5 class="card-title"><%= @memo.title %></h5>
+      <p class="card-text"><%== safe_join(@memo.content.split("\n"),tag(:br)) %></p>
+      <div class="mb-2 me-2 text-end">
+      <%= link_to '削除', @memo, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
+      </div>
+    <% end %>
+  </div>
+</div>  
+

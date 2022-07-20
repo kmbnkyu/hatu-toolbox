@@ -18,7 +18,7 @@ class MemosController < ApplicationController
 
     if @memo.save
       flash[:success] = 'メモが作成されました'
-      redirect_to @memo
+    # redirect_to @memo
     else
       flash.now[:danger] = '作成できませんでした'
       render :new
@@ -31,7 +31,7 @@ class MemosController < ApplicationController
   def update
     if @memo.update(memo_params)
       flash[:success] = '更新されました'
-      redirect_to @memo
+    #  redirect_to @memo
     else
       flash.now[:danger] = '更新されませんでした'
       render :edit

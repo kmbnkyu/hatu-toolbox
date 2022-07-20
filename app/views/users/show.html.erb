@@ -13,9 +13,10 @@
     <ul class="nav nav-tabs nav-justified mb-3">
       <li class="nav-item"><a href="#" class="nav-link">Account</a></li>
     </ul>
-    <p><%= link_to 'View profile', edit_user_path(current_user), class: "text-decoration-none" %></p>
+    <p class="d-flex justify-content-between"><%= link_to 'View profile', edit_user_path(current_user), class: "text-decoration-none" %>
     <% if @user == current_user %>
-    <%= link_to '退会する', @user, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-outline-danger' %>
+    <%= link_to '退会する', @user, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-sm btn-outline-danger' %>
     <% end %>
+    </p>
   </div>
 </div>
