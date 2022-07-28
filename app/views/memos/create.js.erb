@@ -1,8 +1,6 @@
 
 $("#new-modal").modal('hide');
 $("#show-modal").html("<%= j render 'show' %>");
-
-$(".alert").text('メモが作成されました');
 $("#main").html("<%= j render 'toppages/index', {memos: @memos, pagy: @pagy} %>");
 
 
