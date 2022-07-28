@@ -1,6 +1,6 @@
-
-// alert("KOKOだよ");
 debugger;
-$("#main").html("<%= j render 'show' %>");
+$("#edit-modal").modal('hide');
+$("#show-modal").html("<%= j render 'show' %>");
+$("#main").html("<%= j render 'toppages/index', {memos: @memos, pagy: @pagy} %>");
 
 

@@ -1,10 +1,6 @@
 class MemosController < ApplicationController
   before_action :require_user_logged_in
   before_action :correct_user, only: [:show, :edit, :update, :destroy]
-  
-  def index
-    @pagy, @memos = pagy(current_user.memos.order(id: :desc), items: 25)
-  end
 
   def show
   end
@@ -17,8 +13,9 @@ class MemosController < ApplicationController
     @memo = current_user.memos.build(memo_params)
 
     if @memo.save
-      flash[:success] = 'メモが作成されました'
-    # redirect_to @memo
+      #flash[:success] = 'メモが作成されました'
+      @pagy, @memos = pagy(current_user.memos.order(id: :desc), items: 6)
+      #redirect_to @memo
     else
       flash.now[:danger] = '作成できませんでした'
       render :new
@@ -30,7 +27,8 @@ class MemosController < ApplicationController
 
   def update
     if @memo.update(memo_params)
-      flash[:success] = '更新されました'
+      #flash[:success] = '更新されました'
+      @pagy, @memos = pagy(current_user.memos.order(id: :desc), items: 6)
     #  redirect_to @memo
     else
       flash.now[:danger] = '更新されませんでした'

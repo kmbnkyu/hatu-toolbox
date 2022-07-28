@@ -1,12 +1,15 @@
-<div id="edit">
-  <div class="card">
-    <%= link_to edit_memo_path(@memo), class: "card-body text-dark text-decoration-none", remote: true do %>
-      <h5 class="card-title"><%= @memo.title %></h5>
-      <p class="card-text"><%== safe_join(@memo.content.split("\n"),tag(:br)) %></p>
-      <div class="mb-2 me-2 text-end">
-      <%= link_to '削除', @memo, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
+
+<div class="modal modal-sheet position-static d-block bg-secondary py-5" tabindex="-1" role="dialog" id="modalSheet">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content rounded-4 shadow">
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title"><%= @memo.title %></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
       </div>
-    <% end %>
+      <div class="modal-body py-0">
+        <p><%== safe_join(@memo.content.split("\n"),tag(:br)) %></p>
+      </div>
+    </div>
   </div>
-</div>  
+</div>
 

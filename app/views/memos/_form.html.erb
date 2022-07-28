@@ -1,16 +1,19 @@
 <div class="row">
 
-    <%= form_with(model: @memo, local: false) do |f| %>
+    <%= form_with(model: @memo, local: false, class: 'js-memo-form') do |f| %>
       <%= render 'layouts/error_messages', model: f.object %>
       
-      <div>
-        <%= f.text_field :title, placeholder: 'title', class: 'form-control-plaintext' %>
+      <div class="mb-3">
+        <%= f.label :title, 'title' %>
+        <%= f.text_field :title, class: 'form-control' %>
       </div>
       
       <div class="mb-3">
-        <%= f.text_area :content, placeholder: 'content', class: 'form-control-plaintext', rows: 10 %>
+        <%= f.label :content, 'content' %>  
+        <%= f.text_area :content, class: 'form-control', rows: 10 %>
       </div>
 
       <%= f.submit '完了', class: 'btn btn-secondary' %>
     <% end %>
 </div>
+

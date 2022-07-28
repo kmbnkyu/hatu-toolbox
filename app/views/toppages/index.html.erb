@@ -1,14 +1,14 @@
 <% if logged_in? %>
+<div class="container px-4 py-5" id="custom-cards">
+   <div class="d-flex mb-2 justify-content-between border-bottom">
+    <h2>memo</h2>
+    <%= render 'layouts/search' %>
+   </div>
+   <%= link_to '+ 新規', new_memo_path, class: "mb-2 btn btn-outline-dark", remote: true %>
  <div id="main">
-  <div class="row">
-    <h1 class="col-6 mb-1">memo</h1>
-    <div class = "col-6 mt-3 text-end">
-      <%= render 'layouts/search' %>
-    </div>
-  </div>
-  
-    <%= render 'index' %>
+   <%= render 'index', {memos: @memos, pagy: @pagy} %>
  </div>
+</div>
 
 <% else %>
   <div class="p-3 p-sm-5 my-4">
@@ -20,8 +20,8 @@
 <% end %>
 
 <div id="new-modal" class="modal new-modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
-
-
+<div id="show-modal" class="modal show-modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+<div id="edit-modal" class="modal edit-modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
   $('.display-1').on('click', () => {

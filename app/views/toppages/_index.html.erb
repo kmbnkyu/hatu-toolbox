@@ -1,30 +1,30 @@
-<%= link_to '+ 新規', new_memo_path, class: "mb-2 btn btn-outline-dark", remote: true %>
-
-<div class="row">
- <% @memos.each do |memo| %>
- <div class="col-lg-4 col-sm-6">
-  <div class="card mb-3">
-    <%= link_to memo, class: "card-body text-dark text-decoration-none", remote: true do %>
-      <h5 class="card-title"><%= memo.title %></h5>
-      <p class="card-text">
-        <%= memo.created_at.strftime('%Y/%m/%d') %>
-        <%= truncate(memo.content, length: 15) %>
-      </p>
-    <% end %>
-    <div class="mb-2 me-2 text-end">
-    <%#= link_to '削除', memo, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-sm btn-danger' %>
-
-    <%= link_to  memo, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-sm' do %>
-       <i class="bi bi-trash3"></i>
-    <% end %>
-    
-    </div>  
+<% if memos.any? %>
+  <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+  <% memos.each do |memo| %>
+  <div class="col">
+    <div class="card card-cover h-100 overflow-hidden bg-light rounded-4 shadow-lg">
+      <div class="d-flex flex-column h-100 p-5 pb-3 text-dark text-shadow-1">
+        <h2 class="pt-2 mt-2 mb-2 display-6 lh- fw-bold"><%= memo.title %></h2>
+         <p class="card-text"><%= truncate(memo.content, length: 15) %></p>
+        <ul class="d-flex list-unstyled mt-auto">
+          <li class="me-auto">
+            <%= link_to '詳細', memo, class: "btn btn-sm btn-outline-secondary", remote: true %>
+            <%= link_to '削除', memo, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-sm btn-outline-warning' %>
+            <%= link_to '編集', edit_memo_path(memo), class: "btn btn-outline-secondary btn-sm", remote: true %>
+          </li>
+          
+          <li class="d-flex align-items-center">
+            <small><%= memo.created_at.strftime('%Y/%m/%d') %></small>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
- </div>
- <% end %>
-</div>
+  <% end %>
+  </div>
   
-<div class="mt-2">
-  <%== pagy_bootstrap_nav(@pagy) %>
-</div>
+  <div>
+    <%== pagy_bootstrap_nav(pagy) %>
+  </div>
+<% end %>
 
